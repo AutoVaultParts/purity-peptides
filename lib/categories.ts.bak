@@ -1,0 +1,88 @@
+import { Category } from "./types";
+
+export const categories: (Category & { icon: string; photo: string })[] = [
+  {
+    slug: "muscle-recovery",
+    name: "Muscle & Recovery",
+    description: "Researched for muscle growth, recovery, and tissue repair",
+    icon: "/category-recovery.png",
+    photo: "/category-photo-recovery.jpg",
+  },
+  {
+    slug: "fat-loss",
+    name: "Fat Loss & Metabolism",
+    description: "Researched for body composition and metabolic pathways",
+    icon: "/category-fatloss.png",
+    photo: "/category-photo-fatloss.jpg",
+  },
+  {
+    slug: "anti-aging",
+    name: "Anti-Aging & Longevity",
+    description: "Researched for healthy aging and longevity",
+    icon: "/category-antiaging.png",
+    photo: "/category-photo-antiaging.jpg",
+  },
+  {
+    slug: "sexual-health",
+    name: "Sexual Health",
+    description: "Researched for libido and sexual function",
+    icon: "/category-sexualhealth.png",
+    photo: "/category-photo-sexualhealth.jpg",
+  },
+  {
+    slug: "skin-hair",
+    name: "Skin & Hair",
+    description: "Researched for collagen, skin, and hair",
+    icon: "/category-skincare.png",
+    photo: "/category-photo-skincare.jpg",
+  },
+  {
+    slug: "cognitive-research",
+    name: "Cognitive Research",
+    description: "Researched for memory, focus, and neurological function",
+    icon: "/category-cognitive.png",
+    photo: "/category-photo-cognitive.jpg",
+  },
+  {
+    slug: "immune-research",
+    name: "Immune Research",
+    description: "Researched for immune system modulation",
+    icon: "/category-immune.png",
+    photo: "/category-photo-immune.jpg",
+  },
+  {
+    slug: "hormone-research",
+    name: "Hormone Research",
+    description: "Researched for endocrine and hormone signaling",
+    icon: "/category-hormone.png",
+    photo: "/category-photo-hormone.jpg",
+  },
+  {
+    slug: "pigmentation-research",
+    name: "Pigmentation Research",
+    description: "Researched for melanin production",
+    icon: "/category-pigmentation.png",
+    photo: "/category-photo-pigmentation.jpg",
+  },
+  {
+    slug: "research-tools",
+    name: "Research Tools",
+    description: "Laboratory supplies used alongside peptide research",
+    icon: "/category-researchtools.png",
+    photo: "/category-photo-researchtools.jpg",
+  },
+  {
+    slug: "oncology-research",
+    name: "Oncology Research",
+    description: "Peptides researched for tumor-selective cell targeting",
+    icon: "/category-oncology.png",
+    photo: "/category-photo-oncology.jpg",
+  },
+  {
+    slug: "research-compounds",
+    name: "Research Compounds",
+    description: "Non-peptide small molecules sold alongside peptide research",
+    icon: "/category-compounds.png",
+    photo: "/category-photo-compounds.jpg",
+  },
+];

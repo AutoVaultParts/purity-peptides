@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #111111;
+  background: #ffffff;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #111111;
+  transition: border-color 0.2s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+
+.chain-node {
+  transform-origin: center;
+}
+.float-a {
+  animation: floatY 6.5s ease-in-out infinite;
+}
+.float-b {
+  animation: floatY 7.5s ease-in-out infinite -1.8s;
+}
+.float-c {
+  animation: floatY 5.8s ease-in-out infinite -3.2s;
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-11px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-a, .float-b, .float-c,
+  .animate-sway-a, .animate-sway-b, .animate-spin-slow {
+    animation: none !important;
+  }
+}
+
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}

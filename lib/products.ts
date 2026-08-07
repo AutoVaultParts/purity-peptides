@@ -1,0 +1,1242 @@
+import { Product } from "./types";
+
+// Catalog data researched against public chemical references (PubChem-linked CAS,
+// formula, and molecular weight records) and cross-checked against multiple
+// research-peptide vendor spec sheets for realistic mid-tier pricing.
+// Semaglutide and tirzepatide are FDA-approved prescription drugs (as are several
+// other items in this catalog, noted individually in their description fields).
+// They were originally excluded as the highest-enforcement-risk items on the site,
+// then added back after the client confirmed with legal counsel that they could
+// proceed, on the condition that RUO framing stays prominent and unchanged from
+// every other product. Retatrutide remains excluded (not yet reviewed).
+// researchOverview fields are intentionally limited to mechanism and research
+// focus, in hedged research-only language. No dosage, administration route, or
+// "what it treats" content is included anywhere in this file, by design.
+export const products: Product[] = [
+  {
+    sku: "PP-REC-BPC157-5MG",
+    slug: "bpc-157-5mg",
+    name: "BPC-157 5mg",
+    category: "muscle-recovery",
+    price: 59.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C62H98N16O22",
+    molecularWeight: "1419.55 g/mol",
+    casNumber: "137525-51-0",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "BPC-157 is a synthetic pentadecapeptide derived from a partial sequence of human gastric juice protein. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Preclinical (animal and in vitro) studies have investigated BPC-157 in connection with growth factor signaling, including VEGFR2 pathway activity, and nitric oxide signaling, both examined by researchers in relation to angiogenesis and tissue repair processes.",
+      focus:
+        "Research literature has examined BPC-157 in tendon, ligament, and gastrointestinal tissue models, as well as general wound-healing research.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering HPLC purity and identity confirmation." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C and protect from light. Once reconstituted, refrigerate at 2-8\u00b0C and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-REC-TB500-5MG",
+    slug: "tb-500-5mg",
+    name: "TB-500 (Thymosin Beta-4) 5mg",
+    category: "muscle-recovery",
+    price: 64.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C212H350N56O78S",
+    molecularWeight: "4963.44 g/mol",
+    casNumber: "77591-33-4",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "TB-500 corresponds to thymosin beta-4 (T\u03b24), a naturally occurring 43-amino-acid actin-sequestering protein. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "T\u03b24 has been studied for its role in regulating actin polymerization, a process researchers associate with cell migration, and has been examined in the context of tissue remodeling research.",
+      focus:
+        "Preclinical studies have investigated T\u03b24 in cardiac tissue research, wound-healing models, and general cell-migration research.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA including HPLC purity and LC-MS identity confirmation." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-RES-CJCIPA-10MG",
+    slug: "cjc-1295-ipamorelin-blend-10mg",
+    name: "CJC-1295 (No DAC) / Ipamorelin Blend 10mg",
+    category: "muscle-recovery",
+    price: 79.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC), both components",
+    molecularFormula: "CJC-1295: C152H252N44O42 / Ipamorelin: C38H49N9O5",
+    molecularWeight: "CJC-1295: 3367.9 g/mol / Ipamorelin: 711.86 g/mol",
+    casNumber: "863288-34-0 / 170851-70-4",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "A 1:1 blend of CJC-1295 without DAC (a GHRH receptor agonist) and Ipamorelin (a selective ghrelin receptor agonist), studied together for dual-pathway GH-axis research. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "CJC-1295 has been studied for its interaction with the growth hormone-releasing hormone receptor, while Ipamorelin has been examined for selective activity at the ghrelin/GHS receptor. Researchers have investigated the two together for their combined role in growth hormone axis signaling.",
+      focus:
+        "Studied in growth hormone secretory pathway research and related endocrine research models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering both peptide components." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light. Once reconstituted, refrigerate at 2-8\u00b0C and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-RES-IPAM-5MG",
+    slug: "ipamorelin-5mg",
+    name: "Ipamorelin 5mg",
+    category: "muscle-recovery",
+    price: 39.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C38H49N9O5",
+    molecularWeight: "711.86 g/mol",
+    casNumber: "170851-70-4",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Ipamorelin is a synthetic pentapeptide and selective ghrelin/GHS-receptor agonist, studied as a growth hormone secretagogue. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for selective activation of the ghrelin/growth hormone secretagogue receptor, a selectivity profile that researchers have frequently referenced in growth hormone secretagogue studies.",
+      focus:
+        "Growth hormone axis research and receptor-selectivity studies.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-SKN-GHKCU-50MG",
+    slug: "ghk-cu-50mg",
+    name: "GHK-Cu (Copper Peptide) 50mg",
+    category: "skin-hair",
+    price: 44.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C14H24CuN6O4",
+    molecularWeight: "403.9 g/mol",
+    casNumber: "89030-95-5",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "GHK-Cu is a naturally occurring copper complex of the tripeptide glycyl-L-histidyl-L-lysine, studied for its role in collagen signaling and tissue remodeling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Investigated for its role in modulating gene expression associated with collagen and elastin production, and studied in connection with matrix metalloproteinase regulation in tissue remodeling research.",
+      focus:
+        "Dermatological and wound-healing research models, connective tissue research.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-SEX-PT141-5MG",
+    slug: "pt-141-5mg",
+    name: "PT-141 (Bremelanotide) 5mg",
+    category: "sexual-health",
+    price: 49.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C50H68N14O10",
+    molecularWeight: "1025.18 g/mol",
+    casNumber: "189691-06-3",
+    storageBeforeReconstitution: "Store at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "PT-141 (bremelanotide) is a synthetic cyclic heptapeptide and melanocortin receptor agonist, studied for its effects on sexual desire and arousal in melanocortin receptor research. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Investigated for activity at melanocortin receptors (MC3R and MC4R) in the central nervous system, a pathway researchers have studied in connection with sexual arousal signaling in preclinical models.",
+      focus:
+        "Melanocortin receptor research and central nervous system signaling studies related to sexual behavior in research models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering HPLC purity and identity confirmation." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light. Once reconstituted, refrigerate at 2-8\u00b0C and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only, investigated in melanocortin receptor research." },
+    ],
+  },
+  {
+    sku: "PP-SEX-PT141-10MG",
+    slug: "pt-141-10mg",
+    name: "PT-141 (Bremelanotide) 10mg",
+    category: "sexual-health",
+    price: 79.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C50H68N14O10",
+    molecularWeight: "1025.18 g/mol",
+    casNumber: "189691-06-3",
+    storageBeforeReconstitution: "Store at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "PT-141 (bremelanotide) is a synthetic cyclic heptapeptide and melanocortin receptor agonist, studied for its effects on sexual desire and arousal in melanocortin receptor research. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Investigated for activity at melanocortin receptors (MC3R and MC4R) in the central nervous system, a pathway researchers have studied in connection with sexual arousal signaling in preclinical models.",
+      focus:
+        "Melanocortin receptor research and central nervous system signaling studies related to sexual behavior in research models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering HPLC purity and identity confirmation." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light. Once reconstituted, refrigerate at 2-8\u00b0C and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only, investigated in melanocortin receptor research." },
+    ],
+  },
+  {
+    sku: "PP-SKN-MATRIX-30ML",
+    slug: "matrixyl-serum-30ml",
+    name: "Matrixyl Peptide Serum 30ml",
+    category: "skin-hair",
+    price: 36.0,
+    unit: "bottle",
+    form: "Topical serum",
+    purity: "Cosmetic grade (INCI: Palmitoyl Pentapeptide-4)",
+    storageBeforeReconstitution: "Store at room temperature, away from direct sunlight",
+    storageAfterReconstitution: "Not applicable, ready to use",
+    description:
+      "A topical serum formulated with Matrixyl (palmitoyl pentapeptide-4), a signal peptide widely used in cosmetic formulations for its role in supporting the skin's visible firmness and texture.",
+    coaAvailable: false,
+    researchOverview: {
+      mechanism:
+        "Formulated to interact with skin-cell signaling associated with collagen synthesis, a mechanism studied in cosmetic ingredient research.",
+      focus:
+        "Topical cosmetic formulation research, skin texture and firmness studies.",
+    },
+    faqs: [
+      { q: "Is this a research chemical?", a: "No. This is a finished cosmetic product intended for topical use, not a research-use compound." },
+      { q: "How should it be stored?", a: "Store at room temperature, away from direct sunlight and heat." },
+      { q: "Is it fragrance-free?", a: "Yes, formulated without added fragrance for sensitive skin." },
+    ],
+  },
+  {
+    sku: "PP-FAT-AOD9604-5MG",
+    slug: "aod-9604-5mg",
+    name: "AOD-9604 5mg",
+    category: "fat-loss",
+    price: 54.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C78H123N23O23S2",
+    molecularWeight: "1815.10 g/mol",
+    casNumber: "221231-10-3",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "AOD-9604 is a synthetic 16-amino-acid fragment corresponding to the C-terminal region of human growth hormone, studied for its role in lipid metabolism and adipocyte signaling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for its interaction with lipolytic and lipogenic signaling pathways derived from the growth hormone C-terminal region, without the broader IGF-1 or glucose-related effects associated with full-length growth hormone in research models.",
+      focus:
+        "Metabolic and adipose tissue research, including studies of abdominal fat oxidation pathways. Human clinical trials conducted by the original developer did not reach statistical significance for their primary endpoint, and researchers should account for this when reviewing the literature.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-AGE-EPITALON-10MG",
+    slug: "epitalon-10mg",
+    name: "Epitalon 10mg",
+    category: "anti-aging",
+    price: 45.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C14H22N4O9",
+    molecularWeight: "390.35 g/mol",
+    casNumber: "307297-39-8",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Epitalon (Ala-Glu-Asp-Gly) is a synthetic tetrapeptide studied in connection with telomerase activity and cell-cycle regulation. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Investigated for a possible role in upregulating telomerase activity in cultured cells, a mechanism researchers have studied in relation to telomere length and cellular senescence.",
+      focus:
+        "Cell-cycle and longevity research, primarily in preclinical animal and in vitro models. Findings in these models have not been established in controlled human research.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-COG-SEMAX-10MG",
+    slug: "semax-10mg",
+    name: "Semax 10mg",
+    category: "cognitive-research",
+    price: 59.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C37H51N9O10S",
+    molecularWeight: "813.93 g/mol",
+    casNumber: "80714-61-0",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Semax is a synthetic heptapeptide analog of ACTH(4-10), studied in preclinical neuroscience research. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Investigated in animal models for effects on cortical nitric oxide signaling and brain-derived neurotrophic factor (BDNF) expression, pathways researchers associate with neuroprotection.",
+      focus:
+        "Preclinical neuroscience research, including ischemia models and studies of neurotrophic signaling.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-IMM-TA1-10MG",
+    slug: "thymosin-alpha-1-10mg",
+    name: "Thymosin Alpha-1 10mg",
+    category: "immune-research",
+    price: 89.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C129H215N33O55",
+    molecularWeight: "3108.3 g/mol",
+    casNumber: "62304-98-7",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Thymosin Alpha-1 is a naturally occurring 28-amino-acid thymic peptide, studied for its immunoregulatory activity. Supplied for laboratory and educational research only. Note: this peptide is approved under the brand name Zadaxin in a number of countries outside the United States, which places it in the same regulatory-risk category as other approved-drug peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for effects on T-cell differentiation and cytokine signaling, including interleukin-2 production, in immune cell research models.",
+      focus:
+        "Immune modulation research, including studies of T-cell maturation and cytokine response pathways.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-HRM-TESAM-5MG",
+    slug: "tesamorelin-5mg",
+    name: "Tesamorelin 5mg",
+    category: "hormone-research",
+    price: 99.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C221H366N72O67S",
+    molecularWeight: "5135.76 g/mol",
+    casNumber: "218949-48-5",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Tesamorelin is a synthetic analog of growth hormone-releasing factor (GRF), studied for its role in the growth hormone axis. Supplied for laboratory and educational research only. Note: this peptide is FDA-approved under the brand name Egrifta for a specific clinical indication, which places it in the same regulatory-risk category as other approved-drug peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for its interaction with the growth hormone-releasing hormone receptor, a pathway researchers have examined in connection with endogenous growth hormone secretion.",
+      focus:
+        "Endocrine and growth hormone axis research, including studies of visceral adipose tissue signaling.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-PIG-MT2-10MG",
+    slug: "melanotan-ii-10mg",
+    name: "Melanotan II 10mg",
+    category: "pigmentation-research",
+    price: 39.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C50H69N15O9",
+    molecularWeight: "1024.18 g/mol",
+    casNumber: "121062-08-6",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Melanotan II is a synthetic analog of alpha-melanocyte-stimulating hormone (\u03b1-MSH), studied for melanocortin receptor activity related to melanogenesis. Supplied for laboratory and educational research only. Note: unlike other listings on this site, Melanotan II has documented real-world adverse event reports and has been the subject of specific public health warnings against unsupervised use in multiple countries, which we believe is important context for anyone reviewing this listing.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied as a non-selective agonist at melanocortin receptors MC1, MC3, MC4, and MC5, with MC1 receptor activity researched in connection with melanogenesis.",
+      focus:
+        "Melanocortin receptor research and pigmentation pathway studies. No formulation of Melanotan II holds regulatory approval in any major market.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-MUS-GHRP6-5MG",
+    slug: "ghrp-6-5mg",
+    name: "GHRP-6 5mg",
+    category: "muscle-recovery",
+    price: 34.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C46H56N12O6",
+    molecularWeight: "873.01 g/mol",
+    casNumber: "87616-84-0",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "GHRP-6 is a synthetic hexapeptide and ghrelin receptor (GHS-R) agonist, studied as a growth hormone secretagogue. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for agonist activity at the growth hormone secretagogue receptor (GHS-R), the same receptor targeted by endogenous ghrelin, a pathway researchers have examined in relation to growth hormone release.",
+      focus:
+        "Growth hormone axis research. Preclinical studies have also examined GHS-R activation in connection with appetite signaling, which researchers account for when designing GH-focused protocols.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-FAT-CAGRI-5MG",
+    slug: "cagrilintide-5mg",
+    name: "Cagrilintide 5mg",
+    category: "fat-loss",
+    price: 89.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C194H312N54O59S2",
+    molecularWeight: "\u2248 4409 g/mol (calculated from molecular formula)",
+    casNumber: "1415456-99-3",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Cagrilintide is a long-acting, lipidated amylin analog, studied as an agonist of amylin and calcitonin receptors. Supplied for laboratory and educational research only. Note: Cagrilintide is an investigational compound still in pharmaceutical development (including in combination with semaglutide), not yet independently approved by any regulator, which places it in an evolving regulatory category worth monitoring.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied as a non-selective agonist of amylin receptors (AMYR) and the calcitonin receptor (CTR), pathways researchers have examined in relation to satiety signaling and gastric emptying.",
+      focus:
+        "Metabolic and obesity research, including studies of food intake regulation, often examined alongside GLP-1 receptor agonist research.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-AGE-MOTSC-10MG",
+    slug: "mots-c-10mg",
+    name: "MOTS-c 10mg",
+    category: "anti-aging",
+    price: 54.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C101H152N28O22S2",
+    molecularWeight: "2174.6 g/mol",
+    casNumber: "1627580-64-6",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "MOTS-c is a mitochondrial-derived peptide encoded within mitochondrial DNA, studied for its role in cellular energy metabolism. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Investigated for activation of the AMPK signaling pathway and inhibition of MAPK-related signaling, mechanisms researchers associate with metabolic regulation at the cellular level.",
+      focus:
+        "Mitochondrial biology, metabolic homeostasis, and aging research, including studies of exercise-induced changes in circulating MOTS-c levels.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-COG-SELANK-5MG",
+    slug: "selank-5mg",
+    name: "Selank 5mg",
+    category: "cognitive-research",
+    price: 49.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C33H57N11O9",
+    molecularWeight: "751.9 g/mol",
+    casNumber: "129954-34-3",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Selank is a synthetic heptapeptide derived from the natural tetrapeptide tuftsin, studied in preclinical neuroscience and immune research. Supplied for laboratory and educational research only. Note: Selank is a registered pharmaceutical in Russia for anxiety-related indications, which is worth noting for the same reason as other approved-elsewhere peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for positive modulation of GABA-A receptor sensitivity and inhibition of enkephalin-degrading enzymes, mechanisms researchers have examined in connection with anxiolytic and nootropic effects in animal models.",
+      focus:
+        "Preclinical research into GABAergic neurotransmission, stress response, and immune-neural signaling. The evidence base is concentrated in Russian and CIS research institutions with limited independent international replication.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-IMM-LL37-5MG",
+    slug: "ll-37-5mg",
+    name: "LL-37 5mg",
+    category: "immune-research",
+    price: 59.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C205H340N60O53",
+    molecularWeight: "4493.33 g/mol",
+    casNumber: "154947-66-7",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "LL-37 is a naturally occurring 37-amino-acid human cathelicidin antimicrobial peptide, studied for its role in innate immunity. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for direct antimicrobial activity against bacterial membranes and for signaling through formyl peptide receptor-like 1 (FPRL1), a pathway researchers have examined in relation to epithelial cell proliferation and wound response.",
+      focus:
+        "Innate immunity and antimicrobial peptide research, including studies of inflammation and epithelial tissue signaling.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-IMM-KPV-10MG",
+    slug: "kpv-10mg",
+    name: "KPV 10mg",
+    category: "immune-research",
+    price: 34.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C16H30N4O4",
+    molecularWeight: "342.43 g/mol",
+    casNumber: "67727-97-3",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "KPV (Lys-Pro-Val) is a tripeptide corresponding to the C-terminal sequence of alpha-MSH, studied for anti-inflammatory activity independent of pigmentation effects. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for anti-inflammatory signaling that appears independent of melanocortin receptor-driven pigmentation pathways, distinguishing it from other alpha-MSH-derived peptides in research literature.",
+      focus:
+        "Inflammatory and immune-modulation research, including gastrointestinal and skin-barrier inflammation models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-MUS-GHRP2-5MG",
+    slug: "ghrp-2-5mg",
+    name: "GHRP-2 5mg",
+    category: "muscle-recovery",
+    price: 34.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C45H55N9O6",
+    molecularWeight: "817.97 g/mol",
+    casNumber: "158861-67-7",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "GHRP-2 (pralmorelin) is a synthetic hexapeptide and potent ghrelin receptor agonist, studied as a growth hormone secretagogue. Supplied for laboratory and educational research only. Note: GHRP-2 has a diagnostic clinical registration in Japan for growth hormone deficiency testing, which is worth noting alongside other approved-elsewhere peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for potent agonist activity at the growth hormone secretagogue receptor (GHSR), with researchers noting a dual mechanism involving both direct pituitary stimulation and suppression of somatostatin.",
+      focus:
+        "Growth hormone axis research, including studies combining GHRP-2 with GHRH analogs to examine synergistic secretory responses.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-MUS-HEXA-5MG",
+    slug: "hexarelin-5mg",
+    name: "Hexarelin 5mg",
+    category: "muscle-recovery",
+    price: 34.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C47H58N12O6",
+    molecularWeight: "887.04 g/mol",
+    casNumber: "140703-51-1",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Hexarelin is a synthetic hexapeptide and potent growth hormone secretagogue receptor agonist, studied for both GH-releasing and cardioprotective research applications. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for high-affinity agonist activity at GHSR-1a, with a structural modification (2-methyl-tryptophan) that researchers have linked to greater proteolytic resistance than earlier GHRPs.",
+      focus:
+        "Growth hormone axis research, and separately, cardiac tissue research examining CD36 receptor binding independent of GH release.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-MUS-IGF1LR3-1MG",
+    slug: "igf-1-lr3-1mg",
+    name: "IGF-1 LR3 1mg",
+    category: "muscle-recovery",
+    price: 69.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (SDS-PAGE)",
+    molecularFormula: "C400H625N111O115S9",
+    molecularWeight: "9117.60 g/mol",
+    casNumber: "946870-92-4",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 7 days, avoid freeze-thaw cycles",
+    description:
+      "IGF-1 LR3 is a synthetic 83-amino-acid analog of human insulin-like growth factor 1, modified for extended stability and reduced binding-protein affinity. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied as an IGF-1 receptor agonist with substantially reduced affinity for IGF binding proteins compared to native IGF-1, a modification researchers associate with prolonged bioactivity in cell culture and in vivo models.",
+      focus:
+        "Cell proliferation and differentiation research, including studies in muscle, connective tissue, and stem cell models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 7 days, avoiding freeze-thaw cycles." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-MUS-ARA290-10MG",
+    slug: "ara-290-10mg",
+    name: "ARA-290 (Cibinetide) 10mg",
+    category: "muscle-recovery",
+    price: 79.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C51H84N16O21",
+    molecularWeight: "1257.31 g/mol",
+    casNumber: "1208243-50-8",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "ARA-290 (cibinetide) is a synthetic 11-amino-acid peptide derived from the helix-B surface of erythropoietin, studied for tissue-protective signaling without erythropoietic activity. Supplied for laboratory and educational research only. Note: ARA-290 received orphan drug designation for one indication but was never submitted for full approval, and its original developer has since closed operations.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for selective binding to the innate repair receptor, a heterocomplex distinct from the classical erythropoietin receptor, triggering anti-inflammatory and anti-apoptotic signaling without stimulating red blood cell production.",
+      focus:
+        "Tissue-protection research, including studies of nerve fiber density, inflammatory signaling, and cellular stress response.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-IMM-THYMULIN-10MG",
+    slug: "thymulin-10mg",
+    name: "Thymulin 10mg",
+    category: "immune-research",
+    price: 44.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C33H54N12O15",
+    molecularWeight: "858.86 g/mol",
+    casNumber: "63958-90-7",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Thymulin is a naturally occurring zinc-dependent nonapeptide produced by thymic epithelial cells, studied for its role in T-cell differentiation. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for zinc-dependent biological activity, with researchers examining its role in E-rosette formation and T-cell maturation in immune cell models.",
+      focus:
+        "Thymic and T-cell development research, including studies of proinflammatory cytokine regulation.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-COG-DSIP-5MG",
+    slug: "dsip-5mg",
+    name: "DSIP (Delta Sleep-Inducing Peptide) 5mg",
+    category: "cognitive-research",
+    price: 39.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C35H48N10O15",
+    molecularWeight: "848.81 g/mol",
+    casNumber: "62568-57-4",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "DSIP is a naturally occurring nonapeptide first isolated from cerebral venous blood, studied for its role in neuroendocrine and sleep-related signaling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied in connection with slow-wave (delta) EEG activity following intraventricular administration in animal models, alongside effects on ACTH, luteinizing hormone, and growth hormone secretion.",
+      focus:
+        "Neuroendocrine and circadian rhythm research. Findings across the literature have been described as inconsistent, and DSIP's precise receptor mechanism remains unresolved in current research.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-SEX-OXYTOCIN-10MG",
+    slug: "oxytocin-10mg",
+    name: "Oxytocin 10mg",
+    category: "sexual-health",
+    price: 34.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C43H66N12O12S2",
+    molecularWeight: "1007.19 g/mol",
+    casNumber: "50-56-6",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Oxytocin is a naturally occurring nine-amino-acid neuropeptide hormone, studied for its role in social bonding and reproductive physiology. Supplied for laboratory and educational research only. Note: synthetic oxytocin is FDA-approved for specific obstetric indications under separate brand names, which places it in the same regulatory-risk category as other approved-elsewhere peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for activity at the oxytocin receptor (OXTR), a G-protein-coupled receptor researchers have examined in connection with social bonding, stress modulation, and reproductive signaling in preclinical models.",
+      focus:
+        "Neuroscience and behavioral research, including studies of social bonding and emotional memory, separate from its established obstetric pharmacology.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-HRM-GONAD-2MG",
+    slug: "gonadorelin-2mg",
+    name: "Gonadorelin 2mg",
+    category: "hormone-research",
+    price: 49.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C55H75N17O13",
+    molecularWeight: "1182.32 g/mol",
+    casNumber: "33515-09-2",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Gonadorelin is a synthetic decapeptide structurally identical to endogenous gonadotropin-releasing hormone (GnRH), studied for its role in the hypothalamic-pituitary-gonadal axis. Supplied for laboratory and educational research only. Note: gonadorelin is FDA-approved under separate brand names for specific diagnostic and clinical indications, which places it in the same regulatory-risk category as other approved-elsewhere peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for agonist activity at the GnRH receptor in the anterior pituitary, a pathway researchers have examined in connection with pulsatile luteinizing hormone and follicle-stimulating hormone release.",
+      focus:
+        "Endocrine axis research, including studies of pulsatile hormone secretion patterns and reproductive signaling.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-ONC-PNC27-5MG",
+    slug: "pnc-27-5mg",
+    name: "PNC-27 5mg",
+    category: "oncology-research",
+    price: 179.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 95% (HPLC); many batches supplied at \u2265 98%",
+    molecularFormula: "Not universally standardized (varies by salt form: free base, acetate, or TFA)",
+    molecularWeight: "\u2248 3.0-3.3 kDa (varies by salt form and manufacturer)",
+    casNumber: "None assigned",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light, moisture, and heat",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C for short-term use. For extended storage, aliquot and freeze at -80\u00b0C, avoid repeated freeze-thaw cycles",
+    description:
+      "PNC-27 is a synthetic peptide combining the HDM-2 (MDM2)-binding region of human p53 with a membrane-penetrating peptide sequence derived from penetratin, studied for tumor-selective membrane targeting. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for binding to HDM-2 (MDM2) expressed on the surface of certain tumor cells, with preclinical reports describing rapid membrane pore formation and loss of membrane integrity, distinct from classical apoptosis. The precise mechanism remains under active investigation.",
+      focus:
+        "Experimental oncology research, including studies of HDM-2 receptor biology, p53 signaling, and cell-membrane targeting in breast, colon, pancreatic, ovarian, and leukemia research models. Evidence remains preclinical, with no approved therapeutic indication.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Reputable batches ship with a lot-specific CoA covering HPLC purity, mass spectrometry identity confirmation, and peptide sequence verification." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed borosilicate glass vial." },
+      { q: "Why is there no CAS number or fixed molecular formula?", a: "PNC-27 is an experimental, proprietary peptide without an official pharmacopeial reference. Different manufacturers produce different salt forms, so no single CAS number or formula has been universally assigned." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only and has not been approved by the FDA or other regulatory authorities for any therapeutic use." },
+    ],
+  },
+  {
+    sku: "PP-ONC-PNC28-5MG",
+    slug: "pnc-28-5mg",
+    name: "PNC-28 5mg",
+    category: "oncology-research",
+    price: 179.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 95% (HPLC); many batches supplied at \u2265 98%",
+    molecularFormula: "Not universally standardized (varies by salt form: free base, acetate, or TFA)",
+    molecularWeight: "\u2248 3.0-3.4 kDa (varies by salt form and manufacturer)",
+    casNumber: "None assigned",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light, moisture, and heat",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C for short-term use. For extended storage, aliquot and freeze at -80\u00b0C, avoid repeated freeze-thaw cycles",
+    description:
+      "PNC-28 is a synthetic peptide closely related to PNC-27, combining the HDM-2 (MDM2)-binding domain of p53 with a membrane-translocating peptide sequence, studied for tumor-selective cell interactions. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Preclinical studies suggest PNC-28 binds HDM-2 on susceptible tumor cell membranes, promoting membrane pore formation and disruption of cellular integrity, a mechanism researchers have distinguished from conventional agents that target intracellular DNA or cell division pathways.",
+      focus:
+        "Experimental oncology research, including studies of HDM-2-targeted signaling, p53 pathway biology, and tumor-selective membrane disruption in breast, pancreatic, glioblastoma, and melanoma research models. Evidence remains preclinical, with no approved therapeutic indication.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Reputable batches ship with a lot-specific CoA covering HPLC purity, mass spectrometry identity confirmation, and peptide sequence verification." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed borosilicate glass vial." },
+      { q: "How is PNC-28 different from PNC-27?", a: "Both are derived from the same HDM-2-binding region of p53 fused to a membrane-penetrating sequence, but they have distinct amino acid sequences and have been studied in somewhat different tumor models." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only and has not been approved by the FDA or other regulatory authorities for any therapeutic use." },
+    ],
+  },
+  {
+    sku: "PP-FAT-SEMA-5MG",
+    slug: "semaglutide-5mg",
+    name: "Semaglutide 5mg",
+    category: "fat-loss",
+    price: 149.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C187H291N45O59",
+    molecularWeight: "4113.58 g/mol",
+    casNumber: "910463-68-2",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days, avoid repeated freeze-thaw cycles",
+    description:
+      "Semaglutide is a long-acting synthetic GLP-1 receptor agonist engineered from human glucagon-like peptide-1, studied for its role in glucose homeostasis and appetite regulation. Supplied for laboratory and educational research only. Note: pharmaceutical semaglutide is FDA-approved under separate brand names for specific clinical indications. This product is research-grade material, sold strictly for laboratory use, not the approved pharmaceutical product, and is not intended for human consumption in any form.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for selective activation of the GLP-1 receptor, enhancing glucose-dependent insulin secretion, suppressing glucagon release, delaying gastric emptying, and increasing satiety signaling through central nervous system pathways, in research models.",
+      focus:
+        "Metabolic research, including studies of glucose regulation, appetite signaling, and cardiometabolic research models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering HPLC purity and identity confirmation." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate at 2-8\u00b0C and use within 14 days." },
+      { q: "Is this the same as the approved pharmaceutical product?", a: "No. This is research-grade material sold strictly for laboratory and educational research use only. It is not the approved pharmaceutical product and is not intended for human or veterinary consumption in any form." },
+    ],
+  },
+  {
+    sku: "PP-FAT-TIRZ-5MG",
+    slug: "tirzepatide-5mg",
+    name: "Tirzepatide 5mg",
+    category: "fat-loss",
+    price: 189.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C225H348N48O68",
+    molecularWeight: "4813.45 g/mol",
+    casNumber: "2023788-19-2",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days, avoid repeated freeze-thaw cycles",
+    description:
+      "Tirzepatide is a synthetic 39-amino-acid dual GIP and GLP-1 receptor agonist, studied for its combined effects on glucose regulation and energy metabolism. Supplied for laboratory and educational research only. Note: pharmaceutical tirzepatide is FDA-approved under separate brand names for specific clinical indications. This product is research-grade material, sold strictly for laboratory use, not the approved pharmaceutical product, and is not intended for human consumption in any form.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied as a dual agonist at both the GIP and GLP-1 receptors, with researchers examining potential synergistic effects on insulin secretion and glucagon suppression compared with single-receptor agonists in research models.",
+      focus:
+        "Metabolic research, including comparative studies of dual-incretin versus single-incretin receptor signaling.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering HPLC purity and identity confirmation." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate at 2-8\u00b0C and use within 14 days." },
+      { q: "Is this the same as the approved pharmaceutical product?", a: "No. This is research-grade material sold strictly for laboratory and educational research use only. It is not the approved pharmaceutical product and is not intended for human or veterinary consumption in any form." },
+    ],
+  },
+  {
+    sku: "PP-CMP-TESO-500MG",
+    slug: "tesofensine-500mg",
+    name: "Tesofensine 500mg",
+    category: "research-compounds",
+    price: 59.0,
+    unit: "vial",
+    form: "Research-grade powder",
+    purity: "\u2265 99% (HPLC)",
+    molecularFormula: "C21H23Cl2NO",
+    molecularWeight: "376.32 g/mol",
+    casNumber: "195875-84-4",
+    storageBeforeReconstitution: "Store at 2-8\u00b0C for routine storage or -20\u00b0C for extended storage, protect from heat, moisture, and light",
+    storageAfterReconstitution: "If dissolved for laboratory use, store aliquots at 2-8\u00b0C short-term or -20\u00b0C to -80\u00b0C longer-term, avoid repeated freeze-thaw cycles",
+    description:
+      "Tesofensine (NS2330) is a small-molecule triple monoamine reuptake inhibitor, not a peptide, sold alongside our peptide catalog as a research compound. Originally studied for neurodegenerative disease, later research examined its effects on appetite and body weight. Supplied for laboratory and educational research only. Note: Tesofensine's regulatory status varies by jurisdiction and it remains investigational in most countries.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied as a triple monoamine reuptake inhibitor, blocking presynaptic transporters for dopamine, norepinephrine, and serotonin, increasing synaptic concentrations of these neurotransmitters in research models.",
+      focus:
+        "Research into appetite regulation, satiety signaling, and energy balance, alongside earlier research into Parkinson's and Alzheimer's disease models.",
+    },
+    faqs: [
+      { q: "Is this a peptide?", a: "No. Tesofensine is a small-molecule compound, not a peptide. It is listed separately under Research Compounds rather than in any peptide category." },
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA covering HPLC purity and mass spectrometry identity confirmation." },
+      { q: "How should it be stored?", a: "Store unopened material at 2-8\u00b0C or -20\u00b0C for extended storage, protected from moisture, heat, and light." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-COG-HUMANIN-5MG",
+    slug: "humanin-5mg",
+    name: "Humanin 5mg",
+    category: "cognitive-research",
+    price: 69.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C118H204N44O31S",
+    molecularWeight: "\u2248 2687 g/mol",
+    casNumber: "330936-69-1",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Humanin is a naturally occurring 24-amino-acid mitochondrial-derived peptide, encoded within the mitochondrial genome, studied for cytoprotective signaling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for intracellular binding to pro-apoptotic proteins including BAX and Bid, and for extracellular signaling through formyl peptide receptor-like 1 (FPRL1), pathways researchers have examined in connection with cell survival under stress.",
+      focus:
+        "Mitochondrial biology and cytoprotection research, including studies of oxidative stress, apoptotic signaling, and neurodegeneration models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-COG-DIHEXA-10MG",
+    slug: "dihexa-10mg",
+    name: "Dihexa 10mg",
+    category: "cognitive-research",
+    price: 49.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C27H44N4O5",
+    molecularWeight: "504.66 g/mol",
+    casNumber: "1401708-83-5",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Dihexa is a synthetic peptidomimetic derived from angiotensin IV, studied for effects on synaptic connectivity. Supplied for laboratory and educational research only. Note: a key foundational study on Dihexa was retracted in 2025 for data fabrication, and a related clinical trial (PNB-0408) did not succeed. Researchers should account for this when reviewing the available literature.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for activity related to the hepatocyte growth factor (HGF)/c-Met signaling pathway, a mechanism researchers have examined in connection with synaptogenesis in preclinical models.",
+      focus:
+        "Preclinical neuroscience research into synaptic connectivity. Given the 2025 retraction of a key supporting paper, current literature on this compound should be reviewed critically.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-COG-PINEALON-10MG",
+    slug: "pinealon-10mg",
+    name: "Pinealon 10mg",
+    category: "cognitive-research",
+    price: 44.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C15H26N6O8",
+    molecularWeight: "418.41 g/mol",
+    casNumber: "175175-23-2",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Pinealon (Glu-Asp-Arg) is a synthetic tripeptide bioregulator, studied for neuroprotective signaling in preclinical models. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for suppression of reactive oxygen species accumulation and ERK1/2 activation in cerebellar cell models, mechanisms researchers have examined in connection with neuroprotection.",
+      focus:
+        "Preclinical neuroprotection research, concentrated primarily in Russian bioregulator peptide literature with limited independent international replication.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-CVR-ADM-1MG",
+    slug: "adrenomedullin-1mg",
+    name: "Adrenomedullin 1mg",
+    category: "cardiovascular-research",
+    price: 89.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 90% (HPLC)",
+    molecularFormula: "C264H406N80O77S3",
+    molecularWeight: "\u2248 6029 g/mol",
+    casNumber: "148498-78-6",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Adrenomedullin is a naturally occurring 52-amino-acid peptide structurally related to CGRP, studied for vasodilatory and natriuretic signaling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for activity at the calcitonin receptor-like receptor (CRLR) in complex with RAMP2, a pathway researchers have examined in connection with cyclic AMP signaling and vascular tone.",
+      focus:
+        "Cardiovascular, pulmonary, and renal research, including studies of endothelial biology and vascular homeostasis.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-CVR-APELIN13-5MG",
+    slug: "apelin-13-5mg",
+    name: "Apelin-13 5mg",
+    category: "cardiovascular-research",
+    price: 59.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C69H111N23O16S",
+    molecularWeight: "\u2248 1551 g/mol (calculated from molecular formula)",
+    casNumber: "217082-58-1",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Apelin-13 is a naturally occurring 13-amino-acid peptide and endogenous ligand of the APJ receptor, studied for cardiovascular and vascular signaling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for agonist activity at the APJ (apelin) receptor, a G-protein-coupled receptor researchers have examined in connection with cardiac contractility and vascular tone regulation.",
+      focus:
+        "Cardiac contractility research, blood vessel biology, and blood pressure regulation studies in preclinical models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-BJT-TERI-1MG",
+    slug: "teriparatide-1mg",
+    name: "Teriparatide 1mg",
+    category: "bone-joint-research",
+    price: 59.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C181H291N55O51S2",
+    molecularWeight: "4117.72 g/mol",
+    casNumber: "52232-67-4",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Teriparatide is a synthetic 34-amino-acid fragment of human parathyroid hormone (PTH 1-34), studied for its role in bone remodeling. Supplied for laboratory and educational research only. Note: teriparatide is FDA-approved under the brand name Forteo for a specific clinical indication, which places it in the same regulatory-risk category as other approved-elsewhere peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for agonist activity at the PTH1 receptor, a pathway researchers have examined in connection with osteoblast activity and bone formation signaling.",
+      focus:
+        "Skeletal research, including studies of bone mineral density and osteoblast/osteoclast signaling balance.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-BJT-CALC-1MG",
+    slug: "calcitonin-salmon-1mg",
+    name: "Calcitonin (Salmon) 1mg",
+    category: "bone-joint-research",
+    price: 44.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C145H240N44O48S2",
+    molecularWeight: "3431.9 g/mol",
+    casNumber: "47931-85-1",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "Salmon calcitonin is a 32-amino-acid peptide hormone, structurally distinct from but more potent than human calcitonin at the calcitonin receptor, studied for its role in bone and calcium regulation. Supplied for laboratory and educational research only. Note: salmon calcitonin is FDA-approved under separate brand names for specific clinical indications, which places it in the same regulatory-risk category as other approved-elsewhere peptides on this site.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for agonist activity at the calcitonin receptor on osteoclasts, a pathway researchers have examined in connection with inhibition of bone resorption.",
+      focus:
+        "Skeletal and calcium homeostasis research, including studies of osteoclast activity and bone density.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+  {
+    sku: "PP-PNP-DADLE-5MG",
+    slug: "dadle-5mg",
+    name: "DADLE 5mg",
+    category: "pain-neuropeptide-research",
+    price: 49.0,
+    unit: "vial",
+    form: "Lyophilized powder",
+    purity: "\u2265 98% (HPLC)",
+    molecularFormula: "C29H39N5O7",
+    molecularWeight: "569.7 g/mol",
+    casNumber: "63631-40-3",
+    storageBeforeReconstitution: "Store lyophilized powder at -20\u00b0C, protect from light and moisture",
+    storageAfterReconstitution: "Refrigerate at 2-8\u00b0C after reconstitution, use within 14 days",
+    description:
+      "DADLE ([D-Ala2, D-Leu5]-enkephalin) is a synthetic, metabolically stabilized analog of the endogenous opioid peptide enkephalin, studied for opioid receptor signaling. Supplied for laboratory and educational research only.",
+    coaAvailable: true,
+    researchOverview: {
+      mechanism:
+        "Studied for agonist activity at delta and mu opioid receptors, with D-amino acid substitutions researchers associate with resistance to enzymatic degradation compared to native enkephalin.",
+      focus:
+        "Opioid receptor and pain-signaling research, and separately, a body of literature examining DADLE in hibernation-induction and organ-preservation models.",
+    },
+    faqs: [
+      { q: "Does this include a Certificate of Analysis?", a: "Yes. Every batch ships with a lot-specific CoA." },
+      { q: "What form is it supplied in?", a: "Lyophilized (freeze-dried) powder in a sealed glass vial." },
+      { q: "How should it be stored?", a: "Keep the sealed vial at -20\u00b0C, protected from light and moisture. Once reconstituted, refrigerate and use within 14 days." },
+      { q: "Is this intended for human consumption?", a: "No. This product is sold strictly for laboratory and educational research use only." },
+    ],
+  },
+];
