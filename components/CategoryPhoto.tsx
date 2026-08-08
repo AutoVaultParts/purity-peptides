@@ -19,15 +19,15 @@ export default function CategoryPhoto({
   const nextPhotoIndexRef = useRef(2 % photos.length);
   const preloadedRef = useRef<Set<string>>(new Set());
 
+  // Preload only the photo that's coming up next, not the entire set at once
   useEffect(() => {
-    photos.forEach((src) => {
-      if (!preloadedRef.current.has(src)) {
-        const img = new Image();
-        img.src = src;
-        preloadedRef.current.add(src);
-      }
-    });
-  }, [photos]);
+    const upcoming = photos[nextPhotoIndexRef.current];
+    if (upcoming && !preloadedRef.current.has(upcoming)) {
+      const img = new Image();
+      img.src = upcoming;
+      preloadedRef.current.add(upcoming);
+    }
+  }, [photos, activeSlot]);
 
   useEffect(() => {
     if (photos.length <= 1) return;
@@ -37,7 +37,6 @@ export default function CategoryPhoto({
     return () => clearInterval(interval);
   }, [photos.length]);
 
-  // once a fade finishes, quietly load the next photo into the now-hidden slot
   useEffect(() => {
     if (photos.length <= 1) return;
     const timeout = setTimeout(() => {
@@ -57,12 +56,14 @@ export default function CategoryPhoto({
       <img
         src={slotPhotos[0]}
         alt={alt}
+        loading="lazy"
         className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
         style={{ opacity: activeSlot === 0 ? 1 : 0 }}
       />
       <img
         src={slotPhotos[1]}
         alt={alt}
+        loading="lazy"
         className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
         style={{ opacity: activeSlot === 1 ? 1 : 0 }}
       />
