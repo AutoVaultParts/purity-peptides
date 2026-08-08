@@ -126,7 +126,12 @@ export default function TermsPage() {
       <LegalSection number={12} title="Contact Us">
         <LegalContactBox>
           <p className="text-sm font-semibold text-ink">Purity Peptides</p>
-          <p className="text-sm text-gray-600">Email: [support@puritypeptides.com]</p>
+          <p className="text-sm text-gray-600">
+              Email:{" "}
+            <a href="mailto:puritypeptidessupport@gmail.com" className="text-sky hover:underline">
+              puritypeptidessupport@gmail.com
+            </a>
+          </p>
           <p className="text-sm text-gray-600">Website: www.puritypeptides.com</p>
         </LegalContactBox>
       </LegalSection>

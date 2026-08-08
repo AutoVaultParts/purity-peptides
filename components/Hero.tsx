@@ -37,9 +37,32 @@ export default function Hero() {
             <g className="chain-node float-a"><circle cx="680" cy="340" r="15" fill="#EAF3FC" stroke="#111111" strokeWidth="2.5" /></g>
           </g>
 
-          {/* Chain 2, offset lower-left, swaying independently */}
-          <g className="animate-sway-b" style={{ transformOrigin: "230px 400px" }}>
+          {/* Chain 2 — desktop/tablet position, side-by-side with chain 1 (unchanged) */}
+          <g className="hidden sm:block animate-sway-b" style={{ transformOrigin: "230px 400px" }}>
             <g transform="translate(30, 220) scale(0.7)">
+              <g stroke="#7FAEDD" strokeWidth="1.8" fill="none">
+                <path d="M60,340 L140,260" />
+                <path d="M140,260 L120,150" />
+                <path d="M120,150 L220,110" />
+                <path d="M220,110 L300,170" />
+                <path d="M300,170 L360,110" />
+                <path d="M220,110 L250,220" />
+                <path d="M250,220 L340,270" />
+              </g>
+              <g className="chain-node float-c"><circle cx="60" cy="340" r="16" fill="#FFFFFF" stroke="#111111" strokeWidth="2.5" /></g>
+              <g className="chain-node float-a"><circle cx="140" cy="260" r="11" fill="#EAF3FC" stroke="#4A90D9" strokeWidth="2.5" /></g>
+              <g className="chain-node float-b"><circle cx="120" cy="150" r="14" fill="#FFFFFF" stroke="#4A90D9" strokeWidth="2.5" /></g>
+              <g className="chain-node float-c"><circle cx="220" cy="110" r="19" fill="#4A90D9" /></g>
+              <g className="chain-node float-a"><circle cx="300" cy="170" r="12" fill="#EAF3FC" stroke="#111111" strokeWidth="2.5" /></g>
+              <g className="chain-node float-b"><circle cx="360" cy="110" r="10" fill="#FFFFFF" stroke="#4A90D9" strokeWidth="2.5" /></g>
+              <g className="chain-node float-a"><circle cx="250" cy="220" r="13" fill="#EAF3FC" stroke="#111111" strokeWidth="2.5" /></g>
+              <g className="chain-node float-c"><circle cx="340" cy="270" r="15" fill="#FFFFFF" stroke="#4A90D9" strokeWidth="2.5" /></g>
+            </g>
+          </g>
+
+          {/* Chain 2 — mobile position, moved below chain 1 into free vertical space so it's fully visible without shrinking or overlapping */}
+          <g className="sm:hidden animate-sway-b" style={{ transformOrigin: "405px 540px" }}>
+            <g transform="translate(258, 383) scale(0.7)">
               <g stroke="#7FAEDD" strokeWidth="1.8" fill="none">
                 <path d="M60,340 L140,260" />
                 <path d="M140,260 L120,150" />

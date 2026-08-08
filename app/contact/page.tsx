@@ -22,8 +22,6 @@ export default function ContactPage() {
     }
     setLoading(true);
 
-    // TODO: once Supabase is connected, insert this into a contact_requests
-    // table here instead of only simulating success client-side.
     setTimeout(() => {
       setSuccess(true);
       setForm({ name: "", email: "", phone: "", message: "" });
@@ -44,12 +42,19 @@ export default function ContactPage() {
 
       <div className="mx-auto max-w-4xl px-6 py-12">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Contact info */}
           <div className="space-y-4">
             <div className="rounded-card border border-gray-200 p-5">
               <h3 className="mb-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Get in touch</h3>
               <div className="space-y-4">
-                <InfoRow label="Email" value="[support@puritypeptides.com]" />
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Email</p>
+                  <a
+                    href="mailto:puritypeptidessupport@gmail.com"
+                    className="mt-0.5 block text-sm font-medium text-ink hover:text-sky hover:underline"
+                  >
+                    puritypeptidessupport@gmail.com
+                  </a>
+                </div>
                 <InfoRow label="Response time" value="Within 24 hours" />
                 <InfoRow label="Shipping" value="12+ countries served" />
               </div>
@@ -77,7 +82,6 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Contact form */}
           <div className="lg:col-span-2">
             <div className="overflow-hidden rounded-card border border-gray-200">
               <div className="bg-ink px-6 py-4">

@@ -117,8 +117,13 @@ export default function PrivacyPolicyPage() {
       <LegalSection number={9} title="Contact Us">
         <LegalText>Questions about this policy or how we handle your personal information can be sent to:</LegalText>
         <LegalContactBox>
-          <p className="text-sm font-semibold text-ink">Purity Peptides</p>
-          <p className="text-sm text-gray-600">Email: [privacy@puritypeptides.com]</p>
+           <p className="text-sm font-semibold text-ink">Purity Peptides Support</p>
+          <p className="text-sm text-gray-600">
+              Email:{" "}
+            <a href="mailto:puritypeptidessupport@gmail.com" className="text-sky hover:underline">
+              puritypeptidessupport@gmail.com
+            </a>
+          </p>
           <p className="text-sm text-gray-600">Website: www.puritypeptides.com</p>
         </LegalContactBox>
       </LegalSection>

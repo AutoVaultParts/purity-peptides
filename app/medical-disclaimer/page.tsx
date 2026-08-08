@@ -73,7 +73,12 @@ export default function MedicalDisclaimerPage() {
         <LegalText>Questions about the intended use of a specific product can be sent to:</LegalText>
         <LegalContactBox>
           <p className="text-sm font-semibold text-ink">Purity Peptides Support</p>
-          <p className="text-sm text-gray-600">Email: [support@puritypeptides.com]</p>
+          <p className="text-sm text-gray-600">
+              Email:{" "}
+            <a href="mailto:puritypeptidessupport@gmail.com" className="text-sky hover:underline">
+              puritypeptidessupport@gmail.com
+            </a>
+          </p>
         </LegalContactBox>
       </LegalSection>
     </LegalPage>

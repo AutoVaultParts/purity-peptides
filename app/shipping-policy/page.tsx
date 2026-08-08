@@ -86,7 +86,12 @@ export default function ShippingPolicyPage() {
       <LegalSection number={8} title="Contact Us">
         <LegalContactBox>
           <p className="text-sm font-semibold text-ink">Purity Peptides Support</p>
-          <p className="text-sm text-gray-600">Email: [support@puritypeptides.com]</p>
+          <p className="text-sm text-gray-600">
+             Email:{" "}
+            <a href="mailto:puritypeptidessupport@gmail.com" className="text-sky hover:underline">
+              puritypeptidessupport@gmail.com
+            </a>
+          </p>
           <p className="text-sm text-gray-600">Response time: within 24 hours</p>
         </LegalContactBox>
       </LegalSection>

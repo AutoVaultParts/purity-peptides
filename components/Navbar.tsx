@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 
@@ -13,6 +14,7 @@ const links = [
 
 export default function Navbar() {
   const { count } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur">
@@ -52,12 +54,54 @@ export default function Navbar() {
           </Link>
           <Link
             href="/shop"
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky"
+            className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky sm:inline-block"
           >
             Shop now
           </Link>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="flex h-9 w-9 items-center justify-center text-ink md:hidden"
+          >
+            {menuOpen ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu panel */}
+      {menuOpen && (
+        <nav className="border-t border-gray-100 bg-white px-6 py-4 md:hidden">
+          <div className="flex flex-col gap-1">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-base font-semibold text-ink hover:bg-sky-bg hover:text-sky"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/account"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-lg px-3 py-2.5 text-base font-semibold text-ink hover:bg-sky-bg hover:text-sky"
+            >
+              Sign in
+            </Link>
+          </div>
+        </nav>
+      )}
 
       <style jsx global>{`
         @keyframes shake {
