@@ -289,8 +289,13 @@ export default function CheckoutPage() {
               </div>
               <div className="flex items-center justify-between bg-sky-bg px-6 py-4">
                 <div className="flex items-center gap-2">
-                  {activeMethod?.logo && (
+                  {activeMethod?.logo ? (
                     <img src={activeMethod.logo} alt="" className="h-5 w-auto object-contain" />
+                  ) : (
+                    <span className="flex h-5 items-center gap-1">
+                      <img src="/pay-visa.png" alt="Visa" className="h-5 w-auto object-contain" />
+                      <img src="/pay-mastercard.png" alt="Mastercard" className="h-5 w-auto object-contain" />
+                    </span>
                   )}
                   <div>
                     <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Payment</p>

@@ -10,7 +10,7 @@ type StoredOrder = {
   createdAt: string;
   address: { firstName: string; lastName: string; email: string; city: string; country: string };
   paymentMethod: string;
-  items: { sku: string; name: string; price: number; quantity: number; unit: string }[];
+  items: { sku: string; name: string; price: number; quantity: number; unit: string; image?: string | null }[];
   rawSubtotal: number;
   discountRate: number;
   discountAmount: number;
@@ -63,10 +63,19 @@ export default function OrderConfirmationPage({ params }: { params: { orderNumbe
 
       <div className="mb-6 rounded-card border border-gray-200 p-6">
         <h2 className="mb-4 font-heading text-sm font-semibold text-ink">Order summary</h2>
-        <div className="mb-4 space-y-2">
+        <div className="mb-4 space-y-3">
           {order.items.map((item) => (
-            <div key={item.sku} className="flex justify-between text-sm">
-              <span className="text-gray-600">{item.name} &times; {item.quantity}</span>
+            <div key={item.sku} className="flex items-center gap-3 text-sm">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-sky-bg">
+                {item.image ? (
+                  <img src={item.image} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" strokeWidth="1.5">
+                    <path d="M9 2h6M10 2v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-3.5L14 8V2" />
+                  </svg>
+                )}
+              </div>
+              <span className="flex-1 text-gray-600">{item.name} &times; {item.quantity}</span>
               <span className="font-mono text-ink">{formatUsd(item.price * item.quantity)}</span>
             </div>
           ))}
@@ -90,11 +99,21 @@ export default function OrderConfirmationPage({ params }: { params: { orderNumbe
       </div>
 
       {method && (
-        <div className={`rounded-card border p-6 ${method.panel.bg} ${method.panel.border}`}>
-          <h2 className={`mb-2 font-heading text-sm font-semibold ${method.panel.heading}`}>
-            Next step, {method.heading.toLowerCase()}
-          </h2>
-          <p className={`text-sm leading-relaxed ${method.panel.body}`}>{method.instructions}</p>
+        <div className={`mb-6 flex items-center gap-3 rounded-card border p-6 ${method.panel.bg} ${method.panel.border}`}>
+          {method.logo ? (
+            <img src={method.logo} alt={method.label} className="h-8 w-auto flex-shrink-0 object-contain" />
+          ) : (
+            <span className="flex h-8 flex-shrink-0 items-center gap-1">
+              <img src="/pay-visa.png" alt="Visa" className="h-8 w-auto object-contain" />
+              <img src="/pay-mastercard.png" alt="Mastercard" className="h-8 w-auto object-contain" />
+            </span>
+          )}
+          <div>
+            <h2 className={`mb-1 font-heading text-sm font-semibold ${method.panel.heading}`}>
+              Next step, {method.heading.toLowerCase()}
+            </h2>
+            <p className={`text-sm leading-relaxed ${method.panel.body}`}>{method.instructions}</p>
+          </div>
         </div>
       )}
 
