@@ -18,7 +18,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   ]);
 
   return (
-    <div className="flex min-h-screen bg-gray-100 font-body">
+    <div className="flex min-h-screen flex-col bg-gray-100 font-body lg:flex-row">
       <AdminSidebar
         userEmail={user.email}
         badges={{
@@ -26,7 +26,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           messages: unreadMessages ?? 0,
         }}
       />
-      <div className="relative flex-1 overflow-auto lg:ml-0">
+      <div className="relative flex-1 overflow-auto">
         <div
           className="pointer-events-none absolute inset-0 bg-contain bg-center bg-no-repeat opacity-[0.04]"
           style={{ backgroundImage: "url('/logo.png')" }}
