@@ -18,7 +18,7 @@ export default function AddToCartButton({
         e.preventDefault();
         e.stopPropagation();
         if (disabled) return;
-        addItem({ sku: product.sku, slug: product.slug, name: product.name, price: product.price, unit: product.unit });
+        addItem({ sku: product.sku, slug: product.slug, name: product.name, price: product.price, unit: product.unit, image: product.image });
       }}
       disabled={disabled}
       aria-label={disabled ? `${product.name} is out of stock` : `Add ${product.name} to cart`}

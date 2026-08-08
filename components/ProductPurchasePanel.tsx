@@ -13,7 +13,7 @@ export default function ProductPurchasePanel({ product }: { product: DbProduct }
 
   function handleAdd() {
     if (outOfStock) return;
-    addItem({ sku: product.sku, slug: product.slug, name: product.name, price: product.price, unit: product.unit }, qty);
+    addItem({ sku: product.sku, slug: product.slug, name: product.name, price: product.price, unit: product.unit, image: product.image }, qty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1800);
   }

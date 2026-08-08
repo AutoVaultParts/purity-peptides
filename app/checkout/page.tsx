@@ -288,9 +288,14 @@ export default function CheckoutPage() {
                 <button onClick={() => setStep(1)} className="text-xs font-medium text-sky hover:underline">Edit</button>
               </div>
               <div className="flex items-center justify-between bg-sky-bg px-6 py-4">
-                <div>
-                  <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Payment</p>
-                  <p className="text-sm font-medium text-ink">{activeMethod?.label}</p>
+                <div className="flex items-center gap-2">
+                  {activeMethod?.logo && (
+                    <img src={activeMethod.logo} alt="" className="h-5 w-auto object-contain" />
+                  )}
+                  <div>
+                    <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Payment</p>
+                    <p className="text-sm font-medium text-ink">{activeMethod?.label}</p>
+                  </div>
                 </div>
                 <button onClick={() => setStep(2)} className="text-xs font-medium text-sky hover:underline">Edit</button>
               </div>
@@ -300,8 +305,17 @@ export default function CheckoutPage() {
               <div className="p-6">
                 <div className="mb-6 space-y-3">
                   {items.map((item) => (
-                    <div key={item.sku} className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">{item.name} &times; {item.quantity}</span>
+                    <div key={item.sku} className="flex items-center gap-3 text-sm">
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-sky-bg">
+                        {item.image ? (
+                          <img src={item.image} alt="" className="h-full w-full object-cover" />
+                        ) : (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" strokeWidth="1.5">
+                            <path d="M9 2h6M10 2v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-3.5L14 8V2" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="flex-1 text-gray-600">{item.name} &times; {item.quantity}</span>
                       <span className="font-mono text-ink">{formatUsd(item.price * item.quantity)}</span>
                     </div>
                   ))}
@@ -351,8 +365,17 @@ export default function CheckoutPage() {
             <div className="p-5">
               <div className="mb-4 space-y-3">
                 {items.map((item) => (
-                  <div key={item.sku} className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">{item.name} &times; {item.quantity}</span>
+                  <div key={item.sku} className="flex items-center gap-2 text-xs">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-sky-bg">
+                      {item.image ? (
+                        <img src={item.image} alt="" className="h-full w-full object-cover" />
+                      ) : (
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" strokeWidth="1.5">
+                          <path d="M9 2h6M10 2v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-3.5L14 8V2" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="flex-1 text-gray-600">{item.name} &times; {item.quantity}</span>
                     <span className="font-mono font-medium text-ink">{formatUsd(item.price * item.quantity)}</span>
                   </div>
                 ))}

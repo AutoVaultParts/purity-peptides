@@ -64,3 +64,7 @@ img {
   user-select: none;
   -webkit-touch-callout: none;
 }
+
+.admin-input {
+  @apply w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm focus:border-sky focus:outline-none;
+}

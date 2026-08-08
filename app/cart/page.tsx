@@ -28,10 +28,14 @@ export default function CartPage() {
       <div className="divide-y divide-gray-200 border-y border-gray-200">
         {items.map((item) => (
           <div key={item.sku} className="flex items-center gap-4 py-5">
-            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-sky-bg">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" strokeWidth="1.5">
-                <path d="M9 2h6M10 2v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-3.5L14 8V2" />
-              </svg>
+            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-sky-bg">
+              {item.image ? (
+               <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                ) : (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" strokeWidth="1.5">
+                  <path d="M9 2h6M10 2v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-3.5L14 8V2" />
+                </svg>
+                )}
             </div>
             <div className="flex-1">
               <Link href={`/product/${item.slug}`} className="font-heading text-sm font-semibold text-ink hover:text-sky">
