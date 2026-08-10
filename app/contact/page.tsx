@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { submitContactRequest } from "@/lib/data";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -14,7 +15,7 @@ export default function ContactPage() {
     setError("");
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       setError("Please fill in your name, email, and message.");
@@ -22,11 +23,22 @@ export default function ContactPage() {
     }
     setLoading(true);
 
-    setTimeout(() => {
-      setSuccess(true);
-      setForm({ name: "", email: "", phone: "", message: "" });
-      setLoading(false);
-    }, 600);
+    const { error: submitError } = await submitContactRequest({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || undefined,
+      message: form.message,
+    });
+
+    setLoading(false);
+
+    if (submitError) {
+      setError("Something went wrong sending your message. Please try again.");
+      return;
+    }
+
+    setSuccess(true);
+    setForm({ name: "", email: "", phone: "", message: "" });
   }
 
   return (
@@ -48,8 +60,8 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Email</p>
+                  
                   <a
-                    href="mailto:puritypeptidessupport@gmail.com"
                     className="mt-0.5 block text-sm font-medium text-ink hover:text-sky hover:underline"
                   >
                     puritypeptidessupport@gmail.com

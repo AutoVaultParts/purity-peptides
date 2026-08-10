@@ -33,7 +33,4 @@ export function createSupabaseServerClient() {
   );
 }
 
-export const ADMIN_EMAILS = [
-  "puritypeptidessupport@gmail.com",
-  "avp.admin11@gmail.com",
-];
+export const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "").split(",").map((e) => e.trim());

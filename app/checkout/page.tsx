@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { formatUsd, MIN_ORDER_VALUE } from "@/lib/pricing";
 import { COUNTRIES, US_STATES, PAYMENT_METHODS } from "@/lib/checkout-data";
+import { createOrder, getShippingCost } from "@/lib/data";
 
 type Address = {
   firstName: string;
@@ -44,6 +45,7 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [loading, setLoading] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [shippingCost, setShippingCost] = useState(0);
 
   useEffect(() => {
     try {
@@ -69,6 +71,11 @@ export default function CheckoutPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [step]);
 
+  useEffect(() => {
+    if (!address.country || rawSubtotal === 0) return;
+    getShippingCost(address.country, rawSubtotal).then(setShippingCost);
+  }, [address.country, rawSubtotal]);
+
   function updateAddress(key: keyof Address, value: string) {
     setAddress((prev) => ({ ...prev, [key]: value }));
   }
@@ -89,30 +96,44 @@ export default function CheckoutPage() {
   const activeMethod = availablePaymentMethods.find((m) => m.id === paymentMethod) || availablePaymentMethods[0];
 
   const belowMinimum = rawSubtotal < MIN_ORDER_VALUE;
+  const grandTotal = total + shippingCost;
 
-  function handlePlaceOrder() {
+  async function handlePlaceOrder() {
     setLoading(true);
     const year = new Date().getFullYear();
     const random = Math.floor(Math.random() * 90000) + 10000;
     const orderNumber = `PP-${year}-${random}`;
 
-    const order = {
+    const { error } = await createOrder({
       orderNumber,
-      createdAt: new Date().toISOString(),
       address,
       paymentMethod,
-      items,
+      items: items.map((i) => ({
+        sku: i.sku,
+        name: i.name,
+        price: i.price,
+        quantity: i.quantity,
+        unit: i.unit,
+        image: i.image,
+      })),
       rawSubtotal,
       discountRate,
       discountAmount,
-      total,
-    };
+      shippingAmount: shippingCost,
+      total: grandTotal,
+    });
+
+    setLoading(false);
+
+    if (error) {
+      alert("Something went wrong placing your order. Please try again or contact support.");
+      return;
+    }
 
     try {
-      window.localStorage.setItem(`purity-peptides-order-${orderNumber}`, JSON.stringify(order));
       window.sessionStorage.removeItem(STORAGE_KEY);
     } catch {
-      // storage unavailable, order will still navigate through with a summary
+      // ignore
     }
 
     clearCart();
@@ -143,7 +164,6 @@ export default function CheckoutPage() {
 
       <div className="flex flex-col gap-10 lg:flex-row">
         <div className="min-w-0 flex-1">
-          {/* STEP 1: Shipping */}
           {step === 1 && (
             <div className="rounded-card border border-gray-200">
               <div className="border-b border-gray-100 px-6 py-5">
@@ -218,7 +238,6 @@ export default function CheckoutPage() {
             </div>
           )}
 
-          {/* STEP 2: Payment */}
           {step === 2 && (
             <div className="rounded-card border border-gray-200">
               <div className="flex items-center justify-between bg-sky-bg px-6 py-4">
@@ -277,7 +296,6 @@ export default function CheckoutPage() {
             </div>
           )}
 
-          {/* STEP 3: Review */}
           {step === 3 && (
             <div className="rounded-card border border-gray-200">
               <div className="flex items-center justify-between bg-sky-bg px-6 py-4">
@@ -337,9 +355,20 @@ export default function CheckoutPage() {
                       <span className="font-mono">-{formatUsd(discountAmount)}</span>
                     </div>
                   )}
+                  {shippingCost > 0 ? (
+                    <div className="flex justify-between text-gray-600">
+                      <span>Shipping</span>
+                      <span className="font-mono">{formatUsd(shippingCost)}</span>
+                    </div>
+                  ) : (
+                    <div className="flex justify-between font-medium text-success">
+                      <span>Shipping</span>
+                      <span className="font-mono">Free</span>
+                    </div>
+                  )}
                   <div className="flex justify-between font-semibold text-ink">
                     <span>Total</span>
-                    <span className="font-mono">{formatUsd(total)}</span>
+                    <span className="font-mono">{formatUsd(grandTotal)}</span>
                   </div>
                 </div>
 
@@ -354,14 +383,13 @@ export default function CheckoutPage() {
                     loading || belowMinimum ? "cursor-not-allowed bg-gray-200 text-gray-400" : "bg-ink text-white hover:bg-sky"
                   }`}
                 >
-                  {loading ? "Placing order..." : `Place order, ${formatUsd(total)}`}
+                  {loading ? "Placing order..." : `Place order, ${formatUsd(grandTotal)}`}
                 </button>
               </div>
             </div>
           )}
         </div>
 
-        {/* Right: order summary */}
         <div className="w-full lg:w-80 lg:flex-shrink-0">
           <div className="sticky top-24 rounded-card border border-gray-200">
             <div className="rounded-t-card bg-ink px-5 py-4">
@@ -396,9 +424,20 @@ export default function CheckoutPage() {
                     <span className="font-mono">-{formatUsd(discountAmount)}</span>
                   </div>
                 )}
+                {shippingCost > 0 ? (
+                  <div className="flex justify-between text-gray-600">
+                    <span>Shipping</span>
+                    <span className="font-mono">{formatUsd(shippingCost)}</span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between font-medium text-success">
+                    <span>Shipping</span>
+                    <span className="font-mono">Free</span>
+                  </div>
+                )}
                 <div className="flex justify-between border-t border-gray-100 pt-2 font-semibold text-ink">
                   <span>Total</span>
-                  <span className="font-mono text-lg">{formatUsd(total)}</span>
+                  <span className="font-mono text-lg">{formatUsd(grandTotal)}</span>
                 </div>
               </div>
               {belowMinimum && (

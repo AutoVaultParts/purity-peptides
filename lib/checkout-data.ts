@@ -6,35 +6,83 @@ export const COUNTRIES: Country[] = [
   { code: "CA", name: "Canada" },
   { code: "MX", name: "Mexico" },
 
+  // Caribbean & Central America
+  { code: "DO", name: "Dominican Republic" },
+  { code: "CR", name: "Costa Rica" },
+  { code: "PA", name: "Panama" },
+  { code: "JM", name: "Jamaica" },
+  { code: "TT", name: "Trinidad and Tobago" },
+  { code: "BS", name: "Bahamas" },
+  { code: "GT", name: "Guatemala" },
+
   // South America
   { code: "AR", name: "Argentina" },
   { code: "BR", name: "Brazil" },
   { code: "CL", name: "Chile" },
   { code: "CO", name: "Colombia" },
+  { code: "EC", name: "Ecuador" },
   { code: "PE", name: "Peru" },
+  { code: "PY", name: "Paraguay" },
   { code: "UY", name: "Uruguay" },
+  { code: "BO", name: "Bolivia" },
 
   // Europe
   { code: "AT", name: "Austria" },
   { code: "BE", name: "Belgium" },
   { code: "CH", name: "Switzerland" },
+  { code: "CZ", name: "Czech Republic" },
   { code: "DE", name: "Germany" },
   { code: "DK", name: "Denmark" },
   { code: "ES", name: "Spain" },
   { code: "FI", name: "Finland" },
   { code: "FR", name: "France" },
   { code: "GB", name: "United Kingdom" },
+  { code: "GR", name: "Greece" },
+  { code: "HU", name: "Hungary" },
   { code: "IE", name: "Ireland" },
+  { code: "IS", name: "Iceland" },
   { code: "IT", name: "Italy" },
+  { code: "LU", name: "Luxembourg" },
   { code: "NL", name: "Netherlands" },
   { code: "NO", name: "Norway" },
+  { code: "PL", name: "Poland" },
   { code: "PT", name: "Portugal" },
+  { code: "RO", name: "Romania" },
   { code: "SE", name: "Sweden" },
+
+  // Middle East
+  { code: "AE", name: "United Arab Emirates" },
+  { code: "IL", name: "Israel" },
+  { code: "SA", name: "Saudi Arabia" },
+
+  // Asia
+  { code: "JP", name: "Japan" },
+  { code: "KR", name: "South Korea" },
+  { code: "SG", name: "Singapore" },
+  { code: "HK", name: "Hong Kong" },
 
   // Oceania
   { code: "AU", name: "Australia" },
   { code: "NZ", name: "New Zealand" },
 ];
+
+// Maps a checkout country code to one of the shipping_rates regions.
+// Anything not explicitly listed falls back to "INTL", the flat
+// rest-of-world rate — this mirrors how most research-peptide vendors
+// price shipping in practice (a handful of named regions plus one
+// catch-all international rate, rather than a rate per country).
+const EU_COUNTRY_CODES = new Set([
+  "AT", "BE", "CH", "CZ", "DE", "DK", "ES", "FI", "FR", "GB", "GR",
+  "HU", "IE", "IS", "IT", "LU", "NL", "NO", "PL", "PT", "RO", "SE",
+]);
+
+export function getShippingRegion(countryCode: string): "US" | "CA" | "EU" | "AU" | "INTL" {
+  if (countryCode === "US") return "US";
+  if (countryCode === "CA") return "CA";
+  if (countryCode === "AU" || countryCode === "NZ") return "AU";
+  if (EU_COUNTRY_CODES.has(countryCode)) return "EU";
+  return "INTL";
+}
 
 export const US_STATES: string[] = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -67,12 +115,6 @@ export type PaymentMethod = {
   panel: PaymentPanel;
 };
 
-// Region gating reflects real-world availability: CashApp, Venmo, Zelle, and
-// Chime are US-only financial products, not just a business choice. Card,
-// Google Pay, Apple Pay, and PayPal are treated as globally available here.
-// Panel classes are literal Tailwind strings (not built dynamically) so the
-// JIT compiler can detect them; each method gets its own color to match
-// its brand, the same pattern used on the AutoVaultParts checkout.
 export const PAYMENT_METHODS: PaymentMethod[] = [
   {
     id: "card",

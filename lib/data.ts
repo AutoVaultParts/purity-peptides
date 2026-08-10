@@ -1,4 +1,5 @@
 import { supabase } from "./supabase-browser";
+import { getShippingRegion } from "./checkout-data";
 
 export type DbProduct = {
   id: string;
@@ -24,8 +25,8 @@ export type DbProduct = {
   sdsPdfUrl: string | null;
   qaPurityVerification: string | null;
   qaIdentityConfirmation: string | null;
-  image: string | null; // convenience: first image, used by ProductCard/grids
-  images: string[]; // full gallery, used by the product detail page
+  image: string | null;
+  images: string[];
   faqs: { q: string; a: string }[];
   researchOverview: { mechanism: string; focus: string } | null;
 };
@@ -177,4 +178,256 @@ export async function getOneProductPerCategory(): Promise<DbProduct[]> {
   );
 
   return results.filter((p): p is DbProduct => p !== null);
+}
+
+export type ReviewSubmission = {
+  type: "site" | "product";
+  productId?: string | null;
+  customerName: string;
+  customerEmail?: string;
+  rating: number;
+  title?: string;
+  body: string;
+};
+
+export async function submitReview(input: ReviewSubmission): Promise<{ error: string | null }> {
+  const { error } = await supabase.from("reviews").insert({
+    type: input.type,
+    product_id: input.productId ?? null,
+    customer_name: input.customerName,
+    customer_email: input.customerEmail || null,
+    rating: input.rating,
+    title: input.title || null,
+    body: input.body,
+    status: "pending",
+  });
+  if (error) return { error: error.message };
+  return { error: null };
+}
+
+export type PublicReview = {
+  id: string;
+  customerName: string;
+  rating: number;
+  title: string | null;
+  body: string;
+  createdAt: string;
+  isVerifiedPurchase: boolean;
+  isFeatured: boolean;
+};
+
+function mapPublicReview(row: any): PublicReview {
+  return {
+    id: row.id,
+    customerName: row.customer_name,
+    rating: row.rating,
+    title: row.title,
+    body: row.body,
+    createdAt: row.created_at,
+    isVerifiedPurchase: row.is_verified_purchase,
+    isFeatured: row.is_featured,
+  };
+}
+
+export async function getSiteReviews(limit = 6): Promise<PublicReview[]> {
+  const { data, error } = await supabase
+    .from("reviews")
+    .select("*")
+    .eq("status", "approved")
+    .eq("type", "site")
+    .order("is_featured", { ascending: false })
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error) {
+    console.error("getSiteReviews failed:", error.message);
+    return [];
+  }
+  return data.map(mapPublicReview);
+}
+
+export async function getProductReviews(productId: string): Promise<PublicReview[]> {
+  const { data, error } = await supabase
+    .from("reviews")
+    .select("*")
+    .eq("status", "approved")
+    .eq("type", "product")
+    .eq("product_id", productId)
+    .order("is_featured", { ascending: false })
+    .order("created_at", { ascending: false });
+  if (error) {
+    console.error("getProductReviews failed:", error.message);
+    return [];
+  }
+  return data.map(mapPublicReview);
+}
+
+export async function submitContactRequest(input: {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+}): Promise<{ error: string | null }> {
+  const { error } = await supabase.from("contact_requests").insert({
+    name: input.name,
+    email: input.email,
+    phone: input.phone || null,
+    message: input.message,
+    status: "unread",
+  });
+  if (error) return { error: error.message };
+  return { error: null };
+}
+
+export type OrderAddress = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+};
+
+export type OrderItemInput = {
+  sku: string;
+  name: string;
+  price: number;
+  quantity: number;
+  unit: string;
+  image?: string | null;
+};
+
+export async function createOrder(input: {
+  orderNumber: string;
+  address: OrderAddress;
+  paymentMethod: string;
+  items: OrderItemInput[];
+  rawSubtotal: number;
+  discountRate: number;
+  discountAmount: number;
+  shippingAmount: number;
+  total: number;
+}): Promise<{ error: string | null }> {
+  const { data: order, error: orderError } = await supabase
+    .from("orders")
+    .insert({
+      order_number: input.orderNumber,
+      email: input.address.email,
+      address: input.address,
+      payment_method: input.paymentMethod,
+      status: "pending_payment",
+      subtotal: input.rawSubtotal,
+      discount_rate: input.discountRate,
+      discount_amount: input.discountAmount,
+      shipping_amount: input.shippingAmount,
+      total: input.total,
+    })
+    .select("id")
+    .single();
+
+  if (orderError || !order) {
+    return { error: orderError?.message || "Failed to create order" };
+  }
+
+  const itemRows = input.items.map((item) => ({
+    order_id: order.id,
+    sku: item.sku,
+    name: item.name,
+    price: item.price,
+    quantity: item.quantity,
+    unit: item.unit,
+    image: item.image ?? null,
+  }));
+
+  const { error: itemsError } = await supabase.from("order_items").insert(itemRows);
+
+  if (itemsError) {
+    return { error: itemsError.message };
+  }
+
+  return { error: null };
+}
+
+export type DbOrder = {
+  id: string;
+  orderNumber: string;
+  email: string;
+  address: OrderAddress;
+  paymentMethod: string;
+  status: string;
+  subtotal: number;
+  discountRate: number;
+  discountAmount: number;
+  shippingAmount: number;
+  total: number;
+  createdAt: string;
+  items: { sku: string; name: string; price: number; quantity: number; unit: string; image: string | null }[];
+};
+
+export async function getOrderByNumber(orderNumber: string): Promise<DbOrder | null> {
+  const { data: order, error } = await supabase
+    .from("orders")
+    .select("*")
+    .eq("order_number", orderNumber)
+    .maybeSingle();
+
+  if (error || !order) return null;
+
+  const { data: items } = await supabase
+    .from("order_items")
+    .select("sku, name, price, quantity, unit, image")
+    .eq("order_id", order.id);
+
+  return {
+    id: order.id,
+    orderNumber: order.order_number,
+    email: order.email,
+    address: order.address,
+    paymentMethod: order.payment_method,
+    status: order.status,
+    subtotal: Number(order.subtotal),
+    discountRate: Number(order.discount_rate),
+    discountAmount: Number(order.discount_amount),
+    shippingAmount: Number(order.shipping_amount),
+    total: Number(order.total),
+    createdAt: order.created_at,
+    items: (items || []).map((i) => ({
+      sku: i.sku,
+      name: i.name,
+      price: Number(i.price),
+      quantity: i.quantity,
+      unit: i.unit,
+      image: i.image,
+    })),
+  };
+}
+
+const FREE_SHIPPING_THRESHOLDS: Record<string, number> = {
+  US: 500,
+  CA: 800,
+  EU: 1000,
+  AU: 1300,
+  INTL: 1300,
+};
+
+export async function getShippingCost(countryCode: string, subtotal: number): Promise<number> {
+  const region = getShippingRegion(countryCode);
+
+  const threshold = FREE_SHIPPING_THRESHOLDS[region] ?? 1300;
+  if (subtotal >= threshold) return 0;
+
+  const { data, error } = await supabase
+    .from("shipping_rates")
+    .select("rate")
+    .eq("region", region)
+    .lte("weight_min", 0)
+    .order("weight_min", { ascending: true })
+    .limit(1)
+    .maybeSingle();
+
+  if (error || !data) return 0;
+  return Number(data.rate);
 }

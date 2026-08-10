@@ -5,6 +5,7 @@ import ProductFaqs from "@/components/ProductFaqs";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
 import ProductGallery from "@/components/ProductGallery";
 import Reveal from "@/components/Reveal";
+import ProductReviewSection from "@/components/ProductReviewSection";
 
 export async function generateStaticParams() {
   const products = await getProducts();
@@ -154,6 +155,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
         veterinary use, and is not a drug, food, or cosmetic under applicable law unless explicitly labeled as such.
         Statements on this page have not been evaluated by any regulatory authority.
       </p>
+      <ProductReviewSection productId={product.id} />
     </section>
   );
 }

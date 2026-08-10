@@ -1,43 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatUsd } from "@/lib/pricing";
 import { PAYMENT_METHODS } from "@/lib/checkout-data";
+import { getOrderByNumber } from "@/lib/data";
 
-type StoredOrder = {
-  orderNumber: string;
-  createdAt: string;
-  address: { firstName: string; lastName: string; email: string; city: string; country: string };
-  paymentMethod: string;
-  items: { sku: string; name: string; price: number; quantity: number; unit: string; image?: string | null }[];
-  rawSubtotal: number;
-  discountRate: number;
-  discountAmount: number;
-  total: number;
-};
+export default async function OrderConfirmationPage({ params }: { params: { orderNumber: string } }) {
+  const order = await getOrderByNumber(params.orderNumber);
 
-export default function OrderConfirmationPage({ params }: { params: { orderNumber: string } }) {
-  const [order, setOrder] = useState<StoredOrder | null | undefined>(undefined);
-
-  useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(`purity-peptides-order-${params.orderNumber}`);
-      setOrder(raw ? JSON.parse(raw) : null);
-    } catch {
-      setOrder(null);
-    }
-  }, [params.orderNumber]);
-
-  if (order === undefined) return null;
-
-  if (order === null) {
+  if (!order) {
     return (
       <section className="mx-auto max-w-2xl px-6 py-24 text-center">
         <h1 className="mb-3 font-display text-3xl font-medium text-ink">Order not found</h1>
         <p className="mb-8 text-gray-600">
-          We could not find order {params.orderNumber} in this browser. This is expected once real order storage
-          (Supabase) replaces this temporary local version.
+          We could not find order {params.orderNumber}. Please check the order number or contact support.
         </p>
         <Link href="/shop" className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-white hover:bg-sky">
           Back to shop
@@ -83,12 +57,23 @@ export default function OrderConfirmationPage({ params }: { params: { orderNumbe
         <div className="space-y-2 border-t border-gray-200 pt-4 text-sm">
           <div className="flex justify-between text-gray-600">
             <span>Subtotal</span>
-            <span className="font-mono">{formatUsd(order.rawSubtotal)}</span>
+            <span className="font-mono">{formatUsd(order.subtotal)}</span>
           </div>
           {order.discountRate > 0 && (
             <div className="flex justify-between font-medium text-success">
               <span>Bulk discount ({Math.round(order.discountRate * 100)}%)</span>
               <span className="font-mono">-{formatUsd(order.discountAmount)}</span>
+            </div>
+          )}
+          {order.shippingAmount > 0 ? (
+            <div className="flex justify-between text-gray-600">
+              <span>Shipping</span>
+              <span className="font-mono">{formatUsd(order.shippingAmount)}</span>
+            </div>
+          ) : (
+            <div className="flex justify-between font-medium text-success">
+              <span>Shipping</span>
+              <span className="font-mono">Free</span>
             </div>
           )}
           <div className="flex justify-between font-semibold text-ink">

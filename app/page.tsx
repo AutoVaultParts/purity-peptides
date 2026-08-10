@@ -4,6 +4,7 @@ import CategoryGrid from "@/components/CategoryGrid";
 import ProductGrid from "@/components/ProductGrid";
 import StatsSection from "@/components/StatsSection";
 import ProcessSection from "@/components/ProcessSection";
+import ShareExperienceSection from "@/components/ShareExperienceSection";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <ProductGrid />
       <StatsSection />
       <ProcessSection />
+      <ShareExperienceSection />
     </>
   );
 }
