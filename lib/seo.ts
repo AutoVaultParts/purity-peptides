@@ -26,14 +26,26 @@ export function buildMetadata({
     title: fullTitle,
     description,
     alternates: { canonical: fullUrl },
-    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
+    formatDetection: { telephone: false },
+    robots: noIndex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
     openGraph: {
       type: "website",
       title: fullTitle,
       description,
       url: fullUrl,
       siteName: SITE_NAME,
-      images: [{ url: image }],
+      images: [{ url: image, width: 1200, height: 630 }],
       locale: "en_US",
     },
     twitter: {

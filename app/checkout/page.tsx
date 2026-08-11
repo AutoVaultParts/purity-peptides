@@ -241,9 +241,12 @@ export default function CheckoutPage() {
           {step === 2 && (
             <div className="rounded-card border border-gray-200">
               <div className="flex items-center justify-between bg-sky-bg px-6 py-4">
-                <div>
-                  <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Delivering to</p>
-                  <p className="text-sm font-medium text-ink">{address.firstName} {address.lastName}, {address.city}</p>
+                <div className="flex items-center gap-2">
+                  <img src="/location.png" alt="" className="h-5 w-auto flex-shrink-0 object-contain" />
+                  <div>
+                    <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Delivering to</p>
+                    <p className="text-sm font-medium text-ink">{address.firstName} {address.lastName}, {address.city}</p>
+                  </div>
                 </div>
                 <button onClick={() => setStep(1)} className="text-xs font-medium text-sky hover:underline">Edit</button>
               </div>
@@ -299,9 +302,12 @@ export default function CheckoutPage() {
           {step === 3 && (
             <div className="rounded-card border border-gray-200">
               <div className="flex items-center justify-between bg-sky-bg px-6 py-4">
-                <div>
-                  <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Delivering to</p>
-                  <p className="text-sm font-medium text-ink">{address.firstName} {address.lastName}, {address.address1}, {address.city}</p>
+                <div className="flex items-center gap-2">
+                  <img src="/location.png" alt="" className="h-5 w-auto flex-shrink-0 object-contain" />
+                  <div>
+                    <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">Delivering to</p>
+                    <p className="text-sm font-medium text-ink">{address.firstName} {address.lastName}, {address.address1}, {address.city}</p>
+                  </div>
                 </div>
                 <button onClick={() => setStep(1)} className="text-xs font-medium text-sky hover:underline">Edit</button>
               </div>

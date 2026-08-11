@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import SearchBar from "./SearchBar";
 
 const links = [
   { href: "/shop", label: "Shop" },
@@ -38,6 +39,7 @@ export default function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-4">
+          <SearchBar />
           <Link
             href="/cart"
             className="relative inline-block text-ink transition-transform hover:text-sky hover:animate-[shake_0.4s_ease-in-out]"
@@ -78,7 +80,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu panel */}
       {menuOpen && (
         <nav className="border-t border-gray-100 bg-white px-6 py-4 md:hidden">
           <div className="flex flex-col gap-1">

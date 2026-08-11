@@ -12,7 +12,7 @@ export default function ReturnPolicyPage() {
     <LegalPage
       title="Return"
       accent="Policy"
-      updated="[Month] [Day], 2024"
+      updated="06 04, 2025"
       crossLinks={[
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Terms of Service", href: "/terms" },

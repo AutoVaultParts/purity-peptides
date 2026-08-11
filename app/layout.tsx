@@ -31,6 +31,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.puritypeptides.com"),
   title: "Purity Peptides | Research-Grade Peptides & Education",
   description:
     "Purity Peptides is a premium peptide education and e-commerce platform built on transparency, quality, and evidence-based information.",

@@ -431,3 +431,55 @@ export async function getShippingCost(countryCode: string, subtotal: number): Pr
   if (error || !data) return 0;
   return Number(data.rate);
 }
+
+
+
+export async function searchProducts(query: string, limit = 8): Promise<DbProduct[]> {
+  const trimmed = query.trim();
+  if (!trimmed) return [];
+
+  const { data, error } = await supabase
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("published", true)
+    .or(`name.ilike.%${trimmed}%,description.ilike.%${trimmed}%`)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error) {
+    console.error("searchProducts failed:", error.message);
+    return [];
+  }
+
+  let results = data.map(mapProduct);
+
+  // Also match by category name, since the OR filter above can't reach
+  // into the joined categories table directly.
+  const { data: matchingCategories } = await supabase
+    .from("categories")
+    .select("id")
+    .ilike("name", `%${trimmed}%`);
+
+  if (matchingCategories && matchingCategories.length > 0) {
+    const categoryIds = matchingCategories.map((c) => c.id);
+    const { data: byCategory } = await supabase
+      .from("products")
+      .select(PRODUCT_SELECT)
+      .eq("published", true)
+      .in("category_id", categoryIds)
+      .limit(limit);
+
+    if (byCategory) {
+      const existingIds = new Set(results.map((p) => p.id));
+      for (const row of byCategory) {
+        const mapped = mapProduct(row);
+        if (!existingIds.has(mapped.id)) {
+          results.push(mapped);
+          existingIds.add(mapped.id);
+        }
+      }
+    }
+  }
+
+  return results.slice(0, limit);
+}

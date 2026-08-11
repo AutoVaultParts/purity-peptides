@@ -12,7 +12,7 @@ export default function TermsPage() {
     <LegalPage
       title="Terms of"
       accent="Service"
-      updated="[Month] [Day], 2026"
+      updated="01 22, 2026"
       crossLinks={[
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Return Policy", href: "/return-policy" },
