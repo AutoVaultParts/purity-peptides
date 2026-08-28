@@ -60,8 +60,8 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Email</p>
-                  
                   <a
+                    href="mailto:puritypeptidessupport@gmail.com"
                     className="mt-0.5 block text-sm font-medium text-ink hover:text-sky hover:underline"
                   >
                     puritypeptidessupport@gmail.com

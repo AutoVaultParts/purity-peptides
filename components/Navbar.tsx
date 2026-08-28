@@ -12,6 +12,7 @@ const links = [
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -33,7 +34,7 @@ export default function Navbar() {
             className="h-16 w-auto object-contain transition-transform hover:animate-[shake_0.4s_ease-in-out] active:animate-[shake_0.4s_ease-in-out]"
           />
         </Link>
-        <nav className="hidden gap-8 text-base font-bold md:flex">
+        <nav className="hidden gap-6 text-base font-bold md:flex lg:gap-8">
           {links.map((l) => (
             <Link
               key={l.href}
