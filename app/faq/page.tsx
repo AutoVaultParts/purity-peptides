@@ -1,4 +1,5 @@
 import FaqAccordion from "@/components/FaqAccordion";
+import SectionChainDecoration from "@/components/SectionChainDecoration";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -42,7 +43,7 @@ const sections = [
       },
       {
         q: "What payment methods do you accept?",
-        a: "Credit and debit card, Apple Pay, Google Pay, PayPal, and, for US customers, Venmo, CashApp, Zelle, and Chime. Every method is confirmed manually by our team rather than charged automatically.",
+        a: "Credit and debit card, Apple Pay, Google Pay, PayPal, Bitcoin, and, for US customers, Venmo, CashApp, Zelle, and Chime. Every method is confirmed manually by our team rather than charged automatically.",
       },
       {
         q: "Why isn't my payment charged immediately?",
@@ -97,8 +98,9 @@ const sections = [
 export default function FaqPage() {
   return (
     <div>
-      <div className="bg-ink px-6 py-14">
-        <div className="mx-auto max-w-3xl">
+      <div className="relative overflow-hidden bg-ink px-6 py-14">
+        <SectionChainDecoration />
+        <div className="relative mx-auto max-w-3xl">
           <h1 className="mb-2 font-display text-3xl font-medium text-white sm:text-4xl">
             Frequently Asked <span className="text-sky">Questions</span>
           </h1>

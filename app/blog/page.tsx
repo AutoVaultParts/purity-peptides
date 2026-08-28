@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import SectionChainDecoration from "@/components/SectionChainDecoration";
 import { blogPosts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 
@@ -12,8 +13,9 @@ export const metadata = buildMetadata({
 export default function BlogPage() {
   return (
     <div>
-      <div className="bg-ink px-6 py-16">
-        <div className="mx-auto max-w-3xl text-center">
+      <div className="relative overflow-hidden bg-ink px-6 py-16">
+        <SectionChainDecoration />
+        <div className="relative mx-auto max-w-3xl text-center">
           <h1 className="mb-4 font-display text-3xl font-medium text-white sm:text-4xl">
             The <span className="text-sky">Blog</span>
           </h1>

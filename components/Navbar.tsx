@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
 import SearchBar from "./SearchBar";
 
@@ -16,6 +17,11 @@ const links = [
 export default function Navbar() {
   const { count } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  function isActive(href: string) {
+    return pathname === href || pathname.startsWith(`${href}/`);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur">
@@ -27,12 +33,14 @@ export default function Navbar() {
             className="h-16 w-auto object-contain transition-transform hover:animate-[shake_0.4s_ease-in-out] active:animate-[shake_0.4s_ease-in-out]"
           />
         </Link>
-        <nav className="hidden gap-8 text-base font-bold text-black-600 md:flex">
+        <nav className="hidden gap-8 text-base font-bold md:flex">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="inline-block transition-transform hover:text-sky hover:animate-[shake_0.4s_ease-in-out]"
+              className={`inline-block transition-transform hover:text-sky hover:animate-[shake_0.4s_ease-in-out] ${
+                isActive(l.href) ? "text-sky" : "text-black-600"
+              }`}
             >
               {l.label}
             </Link>
@@ -51,7 +59,12 @@ export default function Navbar() {
               </span>
             )}
           </Link>
-          <Link href="/account" className="hidden text-sm font-medium text-ink hover:text-sky md:inline">
+          <Link
+            href="/account"
+            className={`hidden text-sm font-medium md:inline ${
+              isActive("/account") ? "text-sky" : "text-ink hover:text-sky"
+            }`}
+          >
             Sign in
           </Link>
           <Link
@@ -88,7 +101,9 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-base font-semibold text-ink hover:bg-sky-bg hover:text-sky"
+                className={`rounded-lg px-3 py-2.5 text-base font-semibold hover:bg-sky-bg hover:text-sky ${
+                  isActive(l.href) ? "bg-sky-bg text-sky" : "text-ink"
+                }`}
               >
                 {l.label}
               </Link>
@@ -96,7 +111,9 @@ export default function Navbar() {
             <Link
               href="/account"
               onClick={() => setMenuOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-base font-semibold text-ink hover:bg-sky-bg hover:text-sky"
+              className={`rounded-lg px-3 py-2.5 text-base font-semibold hover:bg-sky-bg hover:text-sky ${
+                isActive("/account") ? "bg-sky-bg text-sky" : "text-ink"
+              }`}
             >
               Sign in
             </Link>

@@ -8,7 +8,6 @@ import TopLoader from "@/components/TopLoader";
 import DisableImageActions from "@/components/DisableImageActions";
 import { CartProvider } from "@/lib/cart-context";
 
-// Display serif, used only for the large H1 hero line
 const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -16,14 +15,12 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
 });
 
-// Technical grotesk, used for H2/H3 and anything bold or "outstanding"
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-space-grotesk",
 });
 
-// Body copy
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -56,7 +53,13 @@ export default function RootLayout({
         <DisableImageActions />
         <CartProvider>
           <Navbar />
-          <main>{children}</main>
+          <div className="relative">
+            <div
+              className="pointer-events-none fixed inset-0 z-0 bg-contain bg-center bg-no-repeat opacity-[0.04]"
+              style={{ backgroundImage: "url('/logo.png')" }}
+            />
+            <main className="relative z-10">{children}</main>
+          </div>
           <Footer />
         </CartProvider>
       </body>
